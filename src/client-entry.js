@@ -9,10 +9,19 @@ import rootReducer from './state/reducer'
 
 import App from './components/app'
 
-const createStoreWithMiddleware = applyMiddleware(
-  thunkMiddleware
-)(createStore)
-const store = createStoreWithMiddleware(rootReducer)
+// const createStoreWithMiddleware = applyMiddleware(
+//   thunkMiddleware
+// )(createStore)
+const configureStore = (preloadedState) => (
+  createStore(
+    rootReducer,
+    preloadedState,
+    applyMiddleware(
+      thunkMiddleware
+    )
+  )
+)
+const store = configureStore()
 
 render(
   <Provider store={store}>
