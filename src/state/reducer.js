@@ -13,7 +13,6 @@ function movies (state = [], action) {
 function get (state = false, action) {
   switch (action.type) {
     case 'TOGGLE_GET':
-      console.log('toggle get reducer')
       return !state
     default:
       return state

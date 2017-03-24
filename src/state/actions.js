@@ -32,10 +32,8 @@ export function getPopularMovies() {
   })
   const yearFormat = combinedResults.map(movie => {
     let title = movie.title
-    let newMovie = movie
     let releaseYear = +title.slice(title.length - 5, title.length - 1)
-    newMovie.releaseYear = releaseYear
-    return newMovie
+    return Object.assign({}, movie, { releaseYear })
   })
   const sortedMovies = yearFormat.sort(
     firstBy('releaseYear')
